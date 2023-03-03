@@ -24,3 +24,9 @@ const useIsSSR = () => {
 ```
 
 Module federation server side in Razor can be tricky since you want to prevent the module fetching again client side. This can be further enhanced.
+
+## Running the app
+
+- yarn start for remote1
+- yarn start:prod for shell
+- dotnet run for the Razor application
