@@ -4,23 +4,17 @@
     ViewData["Title"] = "Home page";
 }
 
-<!-- Get the raw HTML content from the node process. -->
-@{
-    string textResult = "<div></div>";
-
-    using (var client = new HttpClient())
-    {
-        var uri = new Uri("http://localhost:3000/?scope=remote1");
-
-        var response = await client.GetAsync(uri);
-
-        textResult = await response.Content.ReadAsStringAsync();
-    }
-}
-
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <div>@Html.Raw(textResult)</div>
+    <div id="app-portal"></div>
 </div>
 
+<script>
+    fetch("http://localhost:3000/?scope=remote1")
+    .then(result => result.text())
+    .then(html => {
+        const targetElement = document.getElementById("app-portal");
+        targetElement.innerHTML = html;
+    });
+</script>

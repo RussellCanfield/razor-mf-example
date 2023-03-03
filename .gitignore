@@ -115,6 +115,9 @@ buildServer
 
 .vs
 
+**/bin
+**/obj
+
 # descendant prettier configuration
 /**/*/.prettierrc
 
